@@ -1,0 +1,18 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  web:
+    build:
+        context: ../
+        dockerfile: ./docker/Dockerfile
+    command: python /code/project/manage.py runserver 0.0.0.0:8002
+    environment:
+        -  DB='db'
+        -  DB_NAME='silk'
+    volumes:
+      - .:/code
+    ports:
+      - "8002:8002"
+    depends_on:
+      - db
