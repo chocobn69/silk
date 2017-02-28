@@ -45,6 +45,24 @@ DATABASES = {
     }
 }
 
+try:
+    DB_HOST = os.environ['DB_HOST']
+    DATABASES['default']['HOST'] = DB_HOST
+except KeyError:
+    pass
+
+try:
+    DB_USER = os.environ['DB_USER']
+    DATABASES['default']['USER'] = DB_USER
+except KeyError:
+    pass
+
+try:
+    DB_PASSWORD = os.environ['DB_PASSWORD']
+    DATABASES['default']['PASSWORD'] = DB_PASSWORD
+except KeyError:
+    pass
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'

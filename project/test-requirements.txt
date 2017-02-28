@@ -2,12 +2,13 @@ Pygments>=2.0,<2.1
 six==1.6.0
 simplejson==3.1.2
 python-dateutil>=2.4,<2.5
-requests==2.2.1
-sqlparse==0.1.11
+requests==2.10
+sqlparse==0.1.19
 Jinja2==2.7.2
 autopep8==1.2.1
 pytz>2014.2
 mock==1.0.1
-Pillow==2.5.1
+Pillow>=3.2
 factory-boy==2.8.1
-freezegun==0.3.5
+freezegun>=0.3,<0.4
+psycopg2==2.6.2
