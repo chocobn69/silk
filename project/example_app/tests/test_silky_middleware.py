@@ -9,12 +9,16 @@ from silk.models import Request
 from .util import mock_data_collector
 
 
+def get_data_dynamic_module_name(module='dynamic'):
+    return '.'.join(__name__.split('.')[:-1] + ['data', module])
+
+
 class TestApplyDynamicMappings(TestCase):
     def test_dynamic_decorator(self):
         middleware = SilkyMiddleware()
         SilkyConfig().SILKY_DYNAMIC_PROFILING = [
             {
-                'module': 'tests.data.dynamic',
+                'module': get_data_dynamic_module_name(),
                 'function': 'foo'
             }
         ]
@@ -30,7 +34,7 @@ class TestApplyDynamicMappings(TestCase):
         middleware = SilkyMiddleware()
         SilkyConfig().SILKY_DYNAMIC_PROFILING = [
             {
-                'module': 'tests.data.dynamic',
+                'module': get_data_dynamic_module_name(),
                 'function': 'foo',
                 'start_line': 1,
                 'end_line': 2,
@@ -48,7 +52,7 @@ class TestApplyDynamicMappings(TestCase):
         middleware = SilkyMiddleware()
         SilkyConfig().SILKY_DYNAMIC_PROFILING = [
             {
-                'module': 'tests.data.dynamic',
+                'module': get_data_dynamic_module_name(),
                 'function': 'foo2',
                 'start_line': 1,
                 'end_line': 7,
@@ -60,7 +64,7 @@ class TestApplyDynamicMappings(TestCase):
         middleware = SilkyMiddleware()
         SilkyConfig().SILKY_DYNAMIC_PROFILING = [
             {
-                'module': 'tests.data.dfsdf',
+                'module': get_data_dynamic_module_name('hghjkjk'),
                 'function': 'foo'
             }
         ]
@@ -70,7 +74,7 @@ class TestApplyDynamicMappings(TestCase):
         middleware = SilkyMiddleware()
         SilkyConfig().SILKY_DYNAMIC_PROFILING = [
             {
-                'module': 'tests.data.dynamic',
+                'module': get_data_dynamic_module_name(),
                 'function': 'bar'
             }
         ]
@@ -80,7 +84,7 @@ class TestApplyDynamicMappings(TestCase):
         middleware = SilkyMiddleware()
         SilkyConfig().SILKY_DYNAMIC_PROFILING = [
             {
-                'dfgdf': 'tests.data.dynamic',
+                'dfgdf': get_data_dynamic_module_name(),
                 'funcgdfgtion': 'bar'
             }
         ]
